@@ -2,7 +2,9 @@ const mongoose = require("mongoose");
 
 const connectDb = async () => {
   try {
-    const connect = await mongoose.connect(process.env.CONNECTION_STRING);
+    const DATABASE_URL =
+      process.env.CONNECTION_STRING || "mongodb://127.0.0.1:3001";
+    const connect = await mongoose.connect(DATABASE_URL);
     console.log(
       "Database connected: ",
       connect.connection.host,
